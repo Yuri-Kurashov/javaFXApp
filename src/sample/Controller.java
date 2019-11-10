@@ -34,11 +34,17 @@ public class Controller {
 
     @FXML
     void initialize() {
-       /* assert loginTextView != null : "fx:id=\"loginTextView\" was not injected: check your FXML file 'sample.fxml'.";
-        assert passswordTextView != null : "fx:id=\"passswordTextView\" was not injected: check your FXML file 'sample.fxml'.";
-        assert authSignInButton != null : "fx:id=\"authSignInButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert loginSignUpButton != null : "fx:id=\"loginSignUpButton\" was not injected: check your FXML file 'sample.fxml'.";
-*/
+
+        authSignInButton.setOnAction(actionEvent -> {
+            String loginText = loginTextView.getText().trim();
+            String loginPassword =passwordTextView.getText().trim();
+            if(!loginText.equals("") && !loginPassword.equals("")) {
+                loginUser(loginText, loginPassword); 
+            } else {
+                System.out.println("Login or Password is empty");
+            }
+        });
+
         loginSignUpButton.setOnAction(actionEvent -> {
            loginSignUpButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -55,5 +61,8 @@ public class Controller {
 
 
         });
+    }
+
+    private void loginUser(String loginText, String loginPassword) {
     }
 }
